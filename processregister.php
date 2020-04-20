@@ -83,22 +83,22 @@ if ($errorCount > 0) {
         'gender' => $gender,
         'designation' => $designation,
         'department' => $department,
-        'lastLoginDate' => date("y/m/d h:i:s a"),
-        'date' => date("y/m/d"),
+        'lastLoginDate' => date("d/m/y h:i:s a"),
+        'date' => date("d/m/y"),
     ];
 
-   $UserExists = find_user($email);
+    $UserExists = find_user($email);
 
-   if ($UserExists) {
-    $_SESSION['error'] = "Registration Failed,User Already exist";
-    header("Location: register.php");
-    die();
-}
+    if ($UserExists) {
+        $_SESSION['error'] = "Registration Failed,User Already exist";
+        header("Location: register.php");
+        die();
+    }
 
-    
+
 
     save_user($userObj);
-    
+
     $_SESSION['message'] = "Registration Successful, you can now login ";
     header("Location: login.php");
 }

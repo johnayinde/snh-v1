@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once("functions/alert.php");
+require_once("functions/users.php");
 
 
 $errorCount = 0;
@@ -21,61 +22,35 @@ if ($errorCount > 0) {
 
     header("Location: login.php");
 } else {
+    $allUsers = scandir("db/users");
+    $countAllUsers = count($allUsers);
 
-    /**
-     * admin login start
-     */
+    for ($i = 0; $i < $countAllUsers; $i++) {
+        $currentUser = $allUsers[$i];
 
-    if ($email == 'admin@snh.com') {
-
-        $adminJson = file_get_contents("db/admin/" . $email . ".json");
-        $adminObj = json_decode($adminJson);
-        $adminDbPassword = $adminObj->password;
-        
-        $adminPassword =  password_verify($password, $adminDbPassword);
-
-        if ($adminPassword) {
-            $_SESSION['loggedIn'] = $adminObj->id;
-            $_SESSION['fullname'] = $adminObj->first_name . " " .  $adminObj->last_name;
-
-            header("Location: admin-dashboard.php");
-
-        }
-    }
-    /**
-     * admin login ends
-     */
-    else {
-        $allUsers = scandir("db/users");
-        $countAllUsers = count($allUsers);
-
-        for ($i = 0; $i < $countAllUsers; $i++) {
-            $currentUser = $allUsers[$i];
-
-            if ($currentUser == $email . ".json") {
-                // check password
-                $userJson = file_get_contents("db/users/" . $currentUser);
-                $userObj = json_decode($userJson);
-                $passwordFromDb = $userObj->password;
-                $passwordFromUser =  password_verify($password, $passwordFromDb);
+        if ($currentUser == $email . ".json") {
+            // check password
+            $userJson = file_get_contents("db/users/" . $currentUser);
+            $userObj = json_decode($userJson);
+            $passwordFromDb = $userObj->password;
+            $passwordFromUser =  password_verify($password, $passwordFromDb);
 
 
-                if ($passwordFromDb == $passwordFromUser) {
-                    $_SESSION['loggedIn'] = $userObj->id;
-                    $_SESSION['email'] = $userObj->email;
-                    $_SESSION['lastLogin'] = $userObj->lastLoginDate;
-                    $_SESSION['date'] = $userObj->date;
-                    $_SESSION['department'] = $userObj->department;
-                    $_SESSION['fullname'] = $userObj->first_name . " " .  $userObj->last_name;
-                    $_SESSION['role'] = $userObj->designation;
+            if ($passwordFromDb == $passwordFromUser) {
+                $_SESSION['loggedIn'] = $userObj->id;
+                $_SESSION['email'] = $userObj->email;
+                $_SESSION['lastLogin'] = $userObj->lastLoginDate;
+                $_SESSION['date'] = $userObj->date;
+                $_SESSION['department'] = $userObj->department;
+                $_SESSION['fullname'] = $userObj->first_name . " " .  $userObj->last_name;
+                $_SESSION['role'] = $userObj->designation;
 
-                    header("Location: dashboard.php");
-                    die();
-                }
+                return_to($_SESSION['role']) ;
+                die();
             }
         }
-        $_SESSION['error'] = "Invalid Email or Password";
-        header("Location: login.php");
-        die();
     }
+    $_SESSION['error'] = "Invalid Email or Password";
+    header("Location: login.php");
+    die();
 }
