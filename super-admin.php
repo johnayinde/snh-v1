@@ -5,27 +5,31 @@ if (!isset($_SESSION['loggedIn'])) {
     header("Location: login.php");
 }
 ?>
-<h1>Super Admin Dashboard</h1>
-
-<a href="view-patient.php">View Patient </a> =>
-<a href="view-staff.php">View Medical Staffs</a>
 
 
+<div class="container">
+   
+    <h1>Super Admin Dashboard</h1>
 
-<div class="col-md 4 pt-4 pl-4 ">
-    <p>Welcome <strong> <?php echo $_SESSION['fullname'] ?></strong></p>
-    <hr />
-    <p>You are user id <strong> <?php echo $_SESSION['loggedIn'] ?></strong></p>
-    <hr />
-    <p>You are logged in as a <strong> <?php echo $_SESSION['role'] ?></strong></p>
-    <hr />
-    <p> Date of registration: <strong> <?php echo $_SESSION['date'] ?></strong></p>
-    <hr />
-    <p> Date and time of last login: <strong> <?php echo $_SESSION['lastLogin'] ?></strong></p>
-    <hr />
-    <p> Department: <strong> <?php echo $_SESSION['department'] ?></strong></p>
-
-
+    <div class="d-flex bd-highlight">
+        <div class="p-2 flex-grow-1 bd-highlight ">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Welcome <strong> <?php echo $_SESSION['fullname'] ?></strong></li>
+                <li class="list-group-item">Date of registration: <span style="text-decoration:underline"><?php echo $_SESSION['date'] ?></span></li>
+                <li class="list-group-item">You are logged in as a <strong> <?php echo $_SESSION['role'] ?></strong></li>
+                <li class="list-group-item"> Department: <strong> <?php echo $_SESSION['department'] ?></strong></li>
+                <li class="list-group-item"> Last login: <strong> <?php echo $_SESSION['lastLogin'] ?></strong></li>
+            </ul>
+        </div>
+        <div class="p-2 bd-highlight">
+            <a href="view-patient.php" role="button" class="btn btn-primary btn-md btn-block text-uppercase font-weight-bold">View Patient</a>
+            <a href="add-patient.php" role="button" class="btn btn-primary btn-md btn-block text-uppercase font-weight-bold">Add Patient</a>
+            <a href="view-staff.php" role="button" class="btn btn-secondary btn-md btn-block text-uppercase font-weight-bold">View Medical Staffs</a>
+        </div>
+    </div>
 </div>
 
+
 <?php include("lib/footer.php"); ?>
+
+

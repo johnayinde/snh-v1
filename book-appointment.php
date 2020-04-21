@@ -14,7 +14,7 @@ if (!isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])) {
 </style>
 <div class="container ">
 	<h1 class="display-4 text-center text-capitalize form-heading">Book An Appointment</h1>
-	<p class="display-5 text-capitalize">All field are required</p>
+	<p class="display-5 text-center text-capitalize">All field are required</p>
 </div>
 <div class="container form-container">
 	<form action="process-appointment.php" method="post">

@@ -7,9 +7,10 @@ if(!isset($_SESSION['loggedIn'])){
     header("Location: login.php");
 }
 ?>
-<a href="super-admin.php" class="appointment_back_button">Go back</a>
+<a href="super-admin.php" class="btn btn-primary ml-3 my-3">Go back</a>
 
-<div class="medical_main">
+
+<div class="container">
   <h3>Medical Staff List</h3>
   <?php 
   
@@ -17,16 +18,16 @@ if(!isset($_SESSION['loggedIn'])){
   if(count($patient) < 1)  { ?>
     <p>StartNG hospital currently has no registered patient</p>
   <?php }else{ ?>
-    <table class="medical_table">
-      <thead>
+    <table class="table table-hover">
+      <thead class="thead-dark">
         <tr>
-          <th>S/N</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Email</th>
-          <th>Gender</th>
-          <th>Department</th>
-          <th>Registration Date</th>
+          <th scope="col">S/N</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Department</th>
+          <th scope="col">Registration Date</th>
         </tr>
       </thead>
       <tbody>

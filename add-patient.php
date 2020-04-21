@@ -1,14 +1,17 @@
 <?php
 require_once("functions/alert.php");
+require_once("functions/users.php");
 include("lib/header.php");
 
-if (isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])) {
-    # redirect back to header
-    header("Location: dashboard.php");
-}
-?>
+if (!isset($_SESSION['loggedIn'])) {
+    header("Location: login.php");
+}?>
+<a href="super-admin.php" class="btn btn-primary ml-3 mt-3">Go back</a>
+
+
+
 <div class="container ">
-    <h1 class="display-4 text-center text-capitalize">registration page</h1>
+    <h1 class="display-4 text-center text-capitalize">Add Users</h1>
     <p class="display-5 text-capitalize text-center">All field are required</p>
 </div>
 
@@ -102,15 +105,11 @@ if (isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])) {
                     ?> type="text" class="form-control" name="department" placeholder="Department">
         </div>
 
-        <input class="btn btn-primary btn-block" type="submit" value="REGISTER">
-        <p>
-            <a href="forgot.php">Forgot Password</a><br />
-            <a href="login.php">Already have an account? Login</a>
-        </p>
+        <input class="btn btn-primary btn-block" type="submit" value="ADD USER">
+        
 
     </form>
 </div>
-
 
 
 <?php include("lib/footer.php");

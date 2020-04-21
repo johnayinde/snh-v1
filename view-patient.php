@@ -1,36 +1,36 @@
-<?php include_once('lib/header.php'); 
+<?php include_once('lib/header.php');
 require_once('functions/alert.php');
 require_once('functions/users.php');
 
-if(!isset($_SESSION['loggedIn'])){
-    // redirect to dashboard
-    header("Location: login.php");
+if (!isset($_SESSION['loggedIn'])) {
+  // redirect to dashboard
+  header("Location: login.php");
 }
 ?>
-<a href="super-admin.php" class="appointment_back_button">Go back</a>
+<a href="super-admin.php" class="btn btn-primary ml-3 mt-3">Go back</a>
 
-<div class="medical_main">
-  <h3>Patients List</h3>
-  <?php 
-  
-   $patient = get_patients();
-  if(count($patient) < 1)  { ?>
+<h3 class="display-4 text-center text-capitalize">Patients List</h3>
+<div class="container">
+  <?php
+
+  $patient = get_patients();
+  if (count($patient) < 1) { ?>
     <p>StartNG hospital currently has no registered patient</p>
-  <?php }else{ ?>
-    <table class="medical_table">
-      <thead>
+  <?php } else { ?>
+    <table class="table table-hover">
+      <thead class="thead-dark">
         <tr>
-          <th>S/N</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Email</th>
-          <th>Gender</th>
-          <th>Department</th>
-          <th>Registration Date</th>
+          <th scope="col">S/N</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Department</th>
+          <th scope="col">Registration Date</th>
         </tr>
       </thead>
       <tbody>
-        <?php 
+        <?php
         $patient = get_patients();
         for ($i = 0; $i < count($patient); $i++) {  ?>
           <tr>
@@ -51,8 +51,3 @@ if(!isset($_SESSION['loggedIn'])){
 
 
 <?php include_once('lib/footer.php'); ?>
-
-
-
-
-

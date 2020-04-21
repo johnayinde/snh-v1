@@ -24,7 +24,7 @@
     <!-- <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm"> -->
     <!-- <h5 class="my-0 mr-md-auto font-weight-normal"><a href="index.php">StartNG Hospital</a></h5> -->
     <nav class="navbar navbarbg  navbar-expand-md navbar-dark">
-        <a class="navbar-brand" href="#">SNH</a>
+        <a class="navbar-brand" href="index.php">SNH</a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#portNav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -38,9 +38,9 @@
                 <?php } else { ?>
 
                     <?php if ($_SESSION['role'] == 'Super Admin (SA)') { ?>
-                        <li class="nav-item mr-1 active"><a class="nav-link" href="super_admin.php">Dashboard</a></li>
+                        <li class="nav-item mr-1 active"><a class="nav-link" href="super-admin.php">Dashboard</a></li>
                     <?php } else if ($_SESSION['role'] == 'Medical Team (MT)') { ?>
-                        <li class="nav-item mr-1 active"><a class="nav-link" href="medical_team.php">Dashboard</a></li>
+                        <li class="nav-item mr-1 active"><a class="nav-link" href="medical-team.php">Dashboard</a></li>
                     <?php } else if ($_SESSION['role'] == 'Patient') { ?>
                         <li class="nav-item mr-1 active"><a class="nav-link" href="patient.php">Dashboard</a></li>
                     <?php } ?>
