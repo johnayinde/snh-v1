@@ -15,9 +15,10 @@
 
 
     <script src="./css/jquery.min.js"></script><!-- BootStrap JQuery  -->
-    <link rel="stylesheet" href="css/main.css"><!-- Main StyleSheet  -->
-
+    
     <script src="js/scripts.js"></script>
+    <link rel="stylesheet" href="css/main.css"><!-- Main StyleSheet  -->
+   
 </head>
 
 <body>
@@ -28,8 +29,8 @@
         <button class="navbar-toggler" data-toggle="collapse" data-target="#portNav">
             <span class="navbar-toggler-icon"></span>
         </button>
-            <div class="collapse navbar-collapse" id="portNav">
-                <ul class="navbar-nav ml-auto">
+        <div class="collapse navbar-collapse" id="portNav">
+            <ul class="navbar-nav ml-auto">
                 <?php if (!isset($_SESSION['loggedIn'])) { ?>
                     <li class="nav-item mr-1 active"><a class="nav-link" href="index.php">Home</a></li>
                     <li class="nav-item mr-1 active"><a class="nav-link" href="login.php">Login</a></li>
@@ -46,8 +47,8 @@
                     <?php } ?>
                     <li class="nav-item mr-1 active"><a class="nav-link" href="reset.php">Reset Password</a></li>
                     <li class="nav-item mr-1 active"><a class="nav-link" href="logout.php">Logout</a></li>
-                </ul>
-            </div>
-        <?php } ?>
+            </ul>
+        </div>
+    <?php } ?>
 
     </nav>
