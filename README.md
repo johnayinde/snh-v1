@@ -1,5 +1,7 @@
 # startng PHP Task 3
+
 start.ng
+
 ADMIN LOGIN DETAILS
 
 Email : admin@snh.com
@@ -8,13 +10,18 @@ password : admin
 
 *******************************************
 
-SAMPLE USER DETAILS
+PATIENT DETAILS
 
 Email : patient@snh.com
 
 password : patient
 
 *********************************************
+MEDICAL TEAM DETAILS
+
+Email : team@snh.com
+
+password : team
 
 
 ### How to run
