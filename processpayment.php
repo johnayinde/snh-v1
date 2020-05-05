@@ -12,7 +12,8 @@ if (isset($_POST['pay'])) {
 	$full_Name = $_POST['full_Name'];
 	$email =  $_POST['email'];
 	$amount =  $_POST['amount'];
-
+	$payment_option =  $_POST['payment_option'];
+	
 	
 }
 
@@ -52,6 +53,7 @@ curl_setopt_array($curl, array(
 		'txref' => $txref,
 		'PBFPubKey' => $PBFPubKey,
 		'redirect_url' => $redirect_url,
+		'payment_options' => $payment_option,
 		// 'payment_plan' => $payment_plan
 	]),
 	CURLOPT_HTTPHEADER => [

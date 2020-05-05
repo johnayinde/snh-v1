@@ -73,6 +73,7 @@ if (!isset($_SESSION['loggedIn'])) {
   <?php } ?>
 
   <!-- transaction table -->
+  <hr>
 
 
   <?php
@@ -81,7 +82,7 @@ if (!isset($_SESSION['loggedIn'])) {
   if (count($transactions) < 1) { ?>
     <p style="text-align: center">You have no pending appointments</p>
   <?php } else { ?>
-    <table class="table table-hover">
+    <table class="table table-hover mt-5">
       <thead class="thead-dark">
         <tr>
           <th scope="col">S/N</th>
@@ -89,12 +90,12 @@ if (!isset($_SESSION['loggedIn'])) {
           <th scope="col">Amount</th>
           <th scope="col">Date</th>
           <th scope="col">Currency</th>
-          <th scope="col">Email</th>
+          <th scope="col">Type</th>
         </tr>
       </thead>
       <tbody>
         <?php
-        $transactions = get_appointment($_SESSION['email']);
+        $transactions = get_transactions($_SESSION['email']);
         for ($i = 0; $i < count($appointments); $i++) {  ?>
           <tr>
             <td><?php echo $i + 1 ?></td>
@@ -102,7 +103,7 @@ if (!isset($_SESSION['loggedIn'])) {
             <td><?php echo $transactions[$i]->amount ?></td>
             <td><?php echo $transactions[$i]->date ?></td>
             <td><?php echo $transactions[$i]->currency ?></td>
-            <td><?php echo $transactions[$i]->email ?></td>
+            <td><?php echo $transactions[$i]->type ?></td>
           </tr>
         <?php } ?>
       </tbody>

@@ -1,6 +1,5 @@
 <?php
 session_start();
-require_once('functions/users.php');
 
 /**
  * validation begin
@@ -58,7 +57,7 @@ if (isset($_GET['txref'])) {
   $paymenttype = $resp['data']['paymenttype'];
   $full_Name = $_SESSION['full_Name'];
   $email = $_SESSION['email'];
-  
+
   $transObj = [
     'full_Name' => $full_Name,
     'email' => $email,
@@ -76,24 +75,28 @@ if (isset($_GET['txref'])) {
     // user get list of transation history
     // medical team see who made payment
 
-    add_transaction($transObj);
+    // add_transaction($transObj);
+    file_put_contents("db/transactions/". $email . ".json", json_encode($transObj));
+
+    $_SESSION['message'] = "Payment Made Successfully ";
+    
+    
+    header("location:sendmail.php");
     
     // Sending mail
-
-    $subject = "Appointment payment recieved";
-    $message = "A payment has been Recieved for your appointment at SNH ";
-    $headers = "From: no-reply@sng.com" . "\r\n" .
-      "CC: somebodyelse@example.com";
-
-    $try = mail($email, $subject, $message, $headers);
-    $_SESSION['message'] = "Payment Made Successfully ";
-
-
-    header("Location: patient.php");
-    die();
+    
+    // $subject = "Appointment payment recieved";
+    // $message = "A payment has been Recieved for your appointment at SNH ";
+    // $headers = "From: no-reply@sng.com" . "\r\n" .
+    // "CC: somebodyelse@example.com";
+    
+    // $try = mail($email, $subject, $message, $headers);
 
   } else {
 
-    // header("Location: failed.php");
   }
 }
+// else {
+//  
+//   die("No reference supplied");
+// }

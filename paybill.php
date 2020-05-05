@@ -2,18 +2,11 @@
 require_once("functions/alert.php");
 
 
-if (isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])) {
-	if ($_SESSION['designation'] == 'Super Admin (SA)') {
-		header("Location: super-admin.php");
-	} else if ($_SESSION['designation'] == 'Medical Team (MT)') {
-		header("Location: medical-team.php");
-	} else if ($_SESSION['designation'] == 'Patient') {
-		header("Location: patient.php");
-	}
-
-	// header("Location: dashboard.php");
-
+if (!isset($_SESSION['loggedIn'])) {
+	# redirect back to header
+	header("Location: login.php");
 }
+
 ?>
 
 <h1 class="display-4 text-center text-capitalize">Make Payment</h1>
@@ -49,6 +42,27 @@ if (isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])) {
 		<div class="form-group">
 			<label for="exampleInputPassword1">Amount</label>
 			<input type="number" name="amount" value="5000" readonly class="form-control" id="exampleInputPassword1" placeholder="Amount">
+		</div>
+
+		<div class="form-group">
+		<label>Payment Option</label><br>
+            <select class="form-control" name="payment_option">
+                <option  value="">Select one</option>
+                <option <?php
+
+                        if (isset($_SESSION['payment_option']) && $_SESSION['payment_option'] == "card") {
+                            echo "selected";
+                        }
+
+                        ?> value="card">Card Payment</option>
+                <option <?php
+
+                        if (isset($_SESSION['payment_option']) && $_SESSION['payment_option'] == 'account') {
+                            echo "selected";
+                        }
+                        ?> value="account">Account Payment</option>
+
+            </select>
 		</div>
 
 		<button type="submit" class="btn btn-primary" name="pay">PAY</button>

@@ -87,12 +87,12 @@ function add_appointment($appointObject){
   $Id = ($numOfappointments - 1);
   file_put_contents("db/appointments/". strtolower($appointObject['appointment_department']) . $Id . ".json", json_encode($appointObject));
 }
-function add_transaction($transObject){
+// function add_transaction($transObject){
   
   
-  file_put_contents("db/transactions/". $transObject['email'] . ".json", json_encode($transObject));
+//   file_put_contents("db/transactions/". $transObject['email'] . ".json", json_encode($transObject));
 
-}
+// }
 
 function get_appointment($department) {
   $allAppointments = [];
