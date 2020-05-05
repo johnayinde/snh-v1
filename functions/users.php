@@ -57,7 +57,9 @@ function find_user($email = "")
 function save_user($userObject){
     file_put_contents("db/users/". $userObject['email'] . ".json", json_encode($userObject));
 }
-
+// function save_trans($userObject){
+//   file_put_contents("db/transations/". $userObject['email'] . ".json", json_encode($userObject));
+// }
 function redirect_to($url = ''){
 
   header("Location: " . $url);
@@ -85,7 +87,12 @@ function add_appointment($appointObject){
   $Id = ($numOfappointments - 1);
   file_put_contents("db/appointments/". strtolower($appointObject['appointment_department']) . $Id . ".json", json_encode($appointObject));
 }
+function add_transaction($transObject){
+  
+  
+  file_put_contents("db/transactions/". $transObject['email'] . ".json", json_encode($transObject));
 
+}
 
 function get_appointment($department) {
   $allAppointments = [];
@@ -107,6 +114,25 @@ function get_appointment($department) {
   return $allAppointments;
 }
 
+function get_transactions($department) {
+  $allTransactions = [];
+
+  $transactionsInDb = scandir("db/transactions");
+  $countAllTransactions = count($transactionsInDb) ;
+
+  for ($counter = 2; $counter < $countAllTransactions; $counter++) {
+    $currentTransactions = $transactionsInDb[$counter];
+
+    //if(strpos($currentAppointment, strtolower($department)) !== false) {
+      $transactionsString = file_get_contents("db/transactions/".$currentTransactions);
+      $appointmentObject = json_decode($transactionsString);
+      array_push($allTransactions, $appointmentObject);
+   // }
+  }
+
+
+  return $allTransactions;
+}
 function get_patients() {
   $allPatients = [];
   $allUsersInDb = scandir("db/users");

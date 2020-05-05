@@ -28,7 +28,9 @@ Folow these steps to run and test the code locally
 
 -Go to https://mailtrap.io/ and login or create a new account
 -Copy this link and paste this link https://www.glob.com.au/sendmail/sendmail.zip on your browser to download sendmail.
+
 -Unzip the downloaded file into a folder preferably named "sendmail".
+
 -Move/Copy this folder (folder containing sendmail) to the root folder of your XAMPP ("C:\xampp\")
 
 ### SETTING UP MAILTRAP AND SENDMAIL

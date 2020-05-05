@@ -37,7 +37,7 @@ if (!isset($_SESSION['loggedIn'])) {
 
 <hr>
 <div class="container">
-
+<!-- appointment table -->
   <?php
   $appointments = get_appointment($_SESSION['department']);
 
@@ -71,6 +71,44 @@ if (!isset($_SESSION['loggedIn'])) {
       </tbody>
     </table>
   <?php } ?>
+
+  <!-- transaction table -->
+
+
+  <?php
+  $transactions = get_transactions($_SESSION['email']);
+
+  if (count($transactions) < 1) { ?>
+    <p style="text-align: center">You have no pending appointments</p>
+  <?php } else { ?>
+    <table class="table table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">S/N</th>
+          <th scope="col">Patient Name</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Date</th>
+          <th scope="col">Currency</th>
+          <th scope="col">Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+        $transactions = get_appointment($_SESSION['email']);
+        for ($i = 0; $i < count($appointments); $i++) {  ?>
+          <tr>
+            <td><?php echo $i + 1 ?></td>
+            <td><?php echo $transactions[$i]->full_Name ?></td>
+            <td><?php echo $transactions[$i]->amount ?></td>
+            <td><?php echo $transactions[$i]->date ?></td>
+            <td><?php echo $transactions[$i]->currency ?></td>
+            <td><?php echo $transactions[$i]->email ?></td>
+          </tr>
+        <?php } ?>
+      </tbody>
+    </table>
+  <?php } ?>
+
 </div>
 
 <?php include("lib/footer.php"); ?>

@@ -36,7 +36,7 @@ if ($errorCount > 0) {
 
 	redirect_to("book-appointment.php");
 } else {
-print_r($_SESSION);
+// print_r($_SESSION);
 	
 	
 	
