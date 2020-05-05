@@ -11,8 +11,6 @@ if (isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])) {
 		header("Location: patient.php");
 	}
 
-	// header("Location: dashboard.php");
-
 }
 ?>
 
@@ -49,6 +47,5 @@ if (isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])) {
 		</p>
 	</form>
 </div>
-<!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 
 <?php include("lib/footer.php") ?>

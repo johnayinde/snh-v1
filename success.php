@@ -70,27 +70,25 @@ if (isset($_GET['txref'])) {
   ];
 
   if (($chargeResponsecode == "00" || $chargeResponsecode == "0") && ($chargeAmount == $amount)  && ($chargeCurrency == $currency)) {
-    //  update database for payment made for admin to see who paid
-    // user see success payment also on email
-    // user get list of transation history
-    // medical team see who made payment
-
-    // add_transaction($transObj);
+   
     file_put_contents("db/transactions/". $email . ".json", json_encode($transObj));
 
     $_SESSION['message'] = "Payment Made Successfully ";
     
+    $subject = "Appointment payment recieved";
+    $message = "A payment has been Recieved for your appointment at SNH ";
+    $headers = "From: no-reply@sng.com" . "\r\n" .
+    "CC: somebodyelse@example.com";
     
-    header("location:sendmail.php");
+    mail($email, $subject, $message, $headers);
+
+
+    /**
+     * header("location:sendmail.php");   
+     * not redirecting giving a bad long url strings
+     *  */ 
+    die();
     
-    // Sending mail
-    
-    // $subject = "Appointment payment recieved";
-    // $message = "A payment has been Recieved for your appointment at SNH ";
-    // $headers = "From: no-reply@sng.com" . "\r\n" .
-    // "CC: somebodyelse@example.com";
-    
-    // $try = mail($email, $subject, $message, $headers);
 
   } else {
 

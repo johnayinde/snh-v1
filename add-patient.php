@@ -5,7 +5,7 @@ include("lib/header.php");
 
 if (!isset($_SESSION['loggedIn'])) {
     header("Location: login.php");
-}?>
+} ?>
 <a href="super-admin.php" class="btn btn-primary ml-3 mt-3">Go back</a>
 
 
@@ -106,7 +106,7 @@ if (!isset($_SESSION['loggedIn'])) {
         </div>
 
         <input class="btn btn-primary btn-block" type="submit" value="ADD USER">
-        
+
 
     </form>
 </div>

@@ -44,17 +44,13 @@ if ($errorCount > 0) {
 
 
             $try = mail($email, $subject, $message, $headers);
-            // print_r($try);
-            // die();
 
             if ($try) {
-                // if message sent display success message
 
                 $_SESSION['message'] = "Password Reset has been sent to your Mail: $email ";
                 header("Location: login.php");
 
             } else {
-                // if message not sent error message
                 $_SESSION['error'] = "Something went wrong, we could not send reset code Mail: $email";
 
                 header("Location: forgot.php");
@@ -63,7 +59,6 @@ if ($errorCount > 0) {
             die();
         }
     }
-    // wrong email address
     $_SESSION['error'] = "Email not registered with us ERROR: $email ";
     header("Location: forgot.php");
 }

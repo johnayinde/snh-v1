@@ -39,7 +39,6 @@ $token = generate_token();
 $txref = $token; // ensure you generate unique references per transaction.
 $PBFPubKey = "FLWPUBK_TEST-e28318e00f3408899ba03b4a681046e1-X"; // get your public key from the dashboard.
 $redirect_url = "https://localhost/snh-v1/success.php/";
-// $payment_plan = "pass the plan id"; // this is only required for recurring payments.
 
 
 curl_setopt_array($curl, array(
@@ -54,7 +53,6 @@ curl_setopt_array($curl, array(
 		'PBFPubKey' => $PBFPubKey,
 		'redirect_url' => $redirect_url,
 		'payment_options' => $payment_option,
-		// 'payment_plan' => $payment_plan
 	]),
 	CURLOPT_HTTPHEADER => [
 		"content-type: application/json",

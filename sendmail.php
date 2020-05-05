@@ -6,6 +6,6 @@
   $headers = "From: no-reply@sng.com" . "\r\n" .
 	 "CC: somebodyelse@example.com";
 
-  $try = mail($email, $subject, $message, $headers);
+  mail($email, $subject, $message, $headers);
 
 header("Location: patient.php");

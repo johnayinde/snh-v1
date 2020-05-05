@@ -1,6 +1,5 @@
 <?php session_start();
 require_once("./functions/users.php");
-// require_once("./functions/redirect.php");
 
 
 
@@ -36,7 +35,6 @@ if ($errorCount > 0) {
 
 	redirect_to("book-appointment.php");
 } else {
-// print_r($_SESSION);
 	
 	
 	
@@ -57,12 +55,6 @@ if ($errorCount > 0) {
 	add_appointment($appointObject);
 
 	
-	// unset($_SESSION['appointment_date'] );
-	// unset($_SESSION['appointment_time']);
-	// unset($_SESSION['appointment_nature']) ;
-	// unset($_SESSION['initial_complaint'] );
-	// unset($_SESSION['appointment_department']);
-
 	$_SESSION["message"] = "Your appointment has been successfully booked";
 	redirect_to("patient.php");
 }

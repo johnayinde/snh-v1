@@ -14,7 +14,6 @@ $gender = $_POST['gender'];
 $designation = $_POST['designation'];
 $department = $_POST['department'];
 
-// != "" ? $_POST['department'] : $errorCount++;
 
 
 

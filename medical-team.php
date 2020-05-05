@@ -80,7 +80,7 @@ if (!isset($_SESSION['loggedIn'])) {
   $transactions = get_transactions($_SESSION['email']);
 
   if (count($transactions) < 1) { ?>
-    <p style="text-align: center">You have no pending appointments</p>
+    <p style="text-align: center">You have no pending transactions</p>
   <?php } else { ?>
     <table class="table table-hover mt-5">
       <thead class="thead-dark">
@@ -96,7 +96,7 @@ if (!isset($_SESSION['loggedIn'])) {
       <tbody>
         <?php
         $transactions = get_transactions($_SESSION['email']);
-        for ($i = 0; $i < count($appointments); $i++) {  ?>
+        for ($i = 0; $i < count($transactions); $i++) {  ?>
           <tr>
             <td><?php echo $i + 1 ?></td>
             <td><?php echo $transactions[$i]->full_Name ?></td>

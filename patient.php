@@ -27,6 +27,7 @@ if (!isset($_SESSION['loggedIn'])) {
         <div class="p-2 bd-highlight">
             <a href="paybill.php" role="button" class="btn btn-primary btn-md btn-block text-uppercase font-weight-bold">Pay Bill</a>
             <a href="book-appointment.php" role="button" class="btn btn-secondary btn-md btn-block text-uppercase font-weight-bold">Book Appointment</a>
+            <a href="transactions.php" role="button" class="btn btn-secondary btn-md btn-block text-uppercase font-weight-bold">Transaction History</a>
         </div>
     </div>
 </div>
